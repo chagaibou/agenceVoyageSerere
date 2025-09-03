@@ -16,8 +16,8 @@
 </head>
 <body class="main-container">
     <main class="flex-grow w-full">
-        <header  class="w-full h-[600px] ">
-            <div class="topbar">
+        <header class="w-full h-[600px] overlay overlay-40 overlay-black">
+            <div class="topbar overlay-content">
                 <div class="text-xl logo flex-centered font-montserrat"><span class="text-3xl font-bold font-edu-cursive">Serere</span></div>
                 <nav class="navbar">
                     <li class="list-none"><a class="link nav-link-hover" href="/index.php"><i class="fa-solid fa-house"></i>Accueil</a></li> <!-- Correction: lien absolu vers la racine sans le segment /public -->
@@ -31,7 +31,7 @@
                     <li class="list-none"><a class="btn-classic btn-hover btn-primary" href="/login.php"><i class="fa-solid fa-user"></i>Se connecter</a></li> <!-- Correction: chemin simplifié /login.php -->
                 </div>
             </div>
-            <section class="hero">
+            <section class="hero overlay-content">
                 <div class="flex-grow w-full hero-content flex-col-centered gap-y-8">
                     <h1 class="text-5xl font-bold text-center font-aref-ruqaa">Votre périple spirituel, notre engagement.</h1>
                     <p class="w-3/4 text-xl text-center">

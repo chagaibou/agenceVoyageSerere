@@ -187,20 +187,6 @@
     backface-visibility: hidden;
   }
 
-  /* Overlay sombre sur l'image de fond */
-  header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Noir avec 40% d'opacité */
-    z-index: 1; /* Place l'overlay au-dessus de l'image mais en-dessous du contenu */
-  }
-
-
-
 
   /* S'assurer que le contenu du header soit au-dessus de l'overlay */
   header > * {

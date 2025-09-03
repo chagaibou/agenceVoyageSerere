@@ -30,11 +30,11 @@
                     <li class="list-none"><a class="btn-classic btn-hover btn-primary" href="/login.php"><i class="fa-solid fa-user"></i>Se connecter</a></li> <!-- Correction: chemin simplifié /login.php -->
                 </div>
             </div>
-            <section id="loginForm" class="w-1/2 bg-white max-h-[400px] h-[400px] absolute-top-center flex flex-col justify-evenly items-center rounded-md px-3 py-3 mt-10">
+            <section id="loginForm" class="w-1/2 bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center rounded-md px-6 py-8">
                 <h2 class="w-full text-3xl h-1/10 flex-centered text-emerald-600 font-aref-ruqaa mb-5">
                     Connexion
                 </h2>
-                <form method="post" class="flex flex-col items-center justify-start w-full max-h-[350px] h-[350px] gap-y-2">
+                <form method="post" class="flex flex-col items-center justify-start w-full gap-y-4">
                     <div class="form-items">
                         <i class="fa-solid fa-user"></i>
                         <label for="login">Identifiant ou email</label>

@@ -201,7 +201,7 @@
   margin-bottom: 1rem;
 }
 
-/* ===== FORMS RESPONSIVE ===== */
+/* ===== FORMS RESPONSIVE ===== 
 .form-container {
   max-width: 500px;
   margin: 2rem auto;
@@ -254,7 +254,9 @@
   background: #047857;
 }
 
-/* ===== FOOTER RESPONSIVE ===== */
+*/
+
+/* ===== FOOTER RESPONSIVE ===== 
 .footer {
   background: #1f2937;
   color: white;
@@ -303,6 +305,8 @@
   text-align: center;
   color: #9ca3af;
 }
+
+*/
 
 /* ===== RESPONSIVE BREAKPOINTS ===== */
 
