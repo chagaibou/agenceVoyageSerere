@@ -1,0 +1,344 @@
+@import "tailwindcss";
+
+/* ========== IMPORTATION DE TOUS LES FICHIERS CSS ======== */
+@import url("responsive.css");
+@import url("components.css");
+
+/* ========== FONTS IMPORTS ======== */
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Local Fonts */
+@font-face {
+  font-family: 'ArefRuqaa';
+  src: url('../assets/fonts/ArefRuqaa-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ArefRuqaa';
+  src: url('../assets/fonts/ArefRuqaa-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ========== CUSTOM SCROLLBAR ======== */
+/* Scrollbar personnalisée pour Webkit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 8px; /* Largeur fine et discrète */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Track complètement transparent */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-secondary) 100%); /* Thumb avec vos couleurs */
+  border-radius: 20px; /* Coins très arrondis pour un look moderne */
+  border: none; /* Pas de bordure */
+  transition: all 0.3s ease; /* Animation fluide */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--color-secondary) 0%, var(--color-primary) 100%); /* Inversion des couleurs au hover */
+  transform: scale(1.1); /* Légère augmentation de taille */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Ombre subtile au hover */
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #059669 0%, #d97706 100%); /* Couleurs plus foncées au clic */
+  transform: scale(0.95); /* Réduction de taille au clic */
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent; /* Coin transparent */
+}
+
+/* Scrollbar personnalisée pour Firefox */
+* {
+  scrollbar-width: thin; /* Largeur fine */
+  scrollbar-color: var(--color-primary) transparent; /* Couleurs: thumb visible, track transparent */
+}
+
+/* Scrollbar personnalisée pour les éléments avec overflow spécifique */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px; /* Encore plus fine pour les éléments internes */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* Track transparent */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  border-radius: 15px; /* Coins arrondis proportionnels */
+  border: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--color-secondary) 0%, var(--color-primary) 100%);
+  transform: scale(1.15); /* Effet hover plus prononcé */
+}
+
+/* Animation de la scrollbar au chargement de la page */
+@keyframes scrollbarFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  animation: scrollbarFadeIn 0.6s ease-out;
+}
+
+/* ========== CUSTOM VARIABLES  ======== */
+@theme{
+  --color-primary: #06CB8D;
+  --color-secondary: #F7AB08;
+  --font-vibes-regular: "Vibes", system-ui;
+  --font-edu-cursive : "Edu NSW ACT Cursive", cursive;
+  --font-montserrat: "Montserrat", 'Open sans';
+  --font-aref-ruqaa: "ArefRuqaa", serif;
+}
+
+
+
+/* Ici on ajoute nos classes */
+@layer utilities {
+  /* Classe utilitaire personnalisée */
+  .flex-centered{
+    @apply flex items-center justify-center;
+  }
+
+  .flex-col-centered{
+    @apply flex flex-col items-center justify-center;
+  }
+
+  .absolute-center{
+    @apply absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
+  }
+
+  .absolute-top-center{
+    @apply absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2; 
+  }
+
+  /* Overlay utilitaire (activable/désactivable) */
+  /* Usage: ajoutez la classe `overlay` sur un conteneur. Placez le contenu au-dessus avec `overlay-content`. */
+  /* Personnalisation: changez l'opacité via .overlay-0/.20/.40/.60/.80 ou en définissant --overlay-opacity */
+  /* Pour changer la couleur: définissez --overlay-color: r,g,b (ex: 5,150,105) sur l'élément. */
+  .overlay{
+    position: relative;
+    --overlay-color: 0,0,0; /* Couleur (r,g,b) par défaut: noir */
+    --overlay-opacity: .4;  /* Opacité par défaut */
+  }
+  .overlay::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(var(--overlay-color), var(--overlay-opacity));
+    z-index: 1;
+    pointer-events: none;
+  }
+  .overlay-content{
+    position: relative;
+    z-index: 2;
+  }
+  /* Variantes d'opacité prêtes à l'emploi */
+  .overlay-0{ --overlay-opacity: 0; }
+  .overlay-20{ --overlay-opacity: .2; }
+  .overlay-40{ --overlay-opacity: .4; }
+  .overlay-60{ --overlay-opacity: .6; }
+  .overlay-80{ --overlay-opacity: .8; }
+  
+  .main-container{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    overflow-x: hidden;
+    background-image: url('../assets/images/bg1.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    backface-visibility: hidden;
+  }
+
+  header{
+    position: relative;
+    background-image: url('../assets/images/bg1.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    backface-visibility: hidden;
+  }
+
+  /* Overlay sombre sur l'image de fond */
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Noir avec 40% d'opacité */
+    z-index: 1; /* Place l'overlay au-dessus de l'image mais en-dessous du contenu */
+  }
+
+
+
+
+  /* S'assurer que le contenu du header soit au-dessus de l'overlay */
+  header > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  .topbar{
+    @apply w-11/12 h-12 bg-white rounded-md;
+    @apply absolute top-0 translate-x-1/2 translate-y-1/2 right-1/2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .navbar{
+    @apply flex items-center justify-between w-1/2 h-auto;
+  }
+
+  a.link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @apply capitalize gap-x-2;
+    @apply px-3 py-1 no-underline w-max;
+  }
+
+  .link-button{
+    @apply bg-gray-200;
+  }
+
+  .topbar .actions-buttons{
+      @apply flex items-center justify-between h-full px-3 py-1.5 w-max gap-x-3; 
+  }
+
+  .connect-button{
+    @apply text-black;
+  }
+
+  .hero{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; 
+    height: 40%;
+    @apply flex flex-col items-center justify-between gap-y-10;
+  }
+
+  .hero-content{
+    @apply text-white bg-transparent;
+  }
+}
+
+/* ========== COMPONENTS ======== */
+@layer components{
+  .logo{
+    @apply h-max w-max text-emerald-600;
+  }
+
+  .nav-link-hover{
+    @apply transition-all duration-200 ease-in-out rounded-md hover:scale-110 hover:text-white hover:bg-emerald-600;
+  }
+
+  .btn-classic{
+    @apply flex items-center justify-center gap-x-2;
+    @apply px-3 bg-gray-100 rounded-md w-max h-max py-1.5;
+    @apply cursor-pointer;
+  }
+
+  .btn-hover{
+    @apply transition-all duration-300 ease-in-out hover:text-white;
+    @apply hover:scale-110;
+  }
+
+  .btn-primary{
+    background-color: var(--color-primary);
+  }
+
+  .btn-primary:hover{
+    background-color: var(--color-primary);
+  }
+
+  .btn-secondary:hover{
+    background-color: var(--color-secondary);
+  }
+
+
+  .btn-hover > i{
+    @apply transition-all duration-200 ease-out hover:rotate-45 hover:scale-110;
+  }
+
+  /* === Forms  Componenents === */
+  .form-items, .form-link, .form-button{
+    width: 95%;
+    max-height: 70px;
+    display: flex;
+  }
+
+  .form-items{
+    position: relative;
+    height: 70px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    @apply px-2 py-1 gap-y-1;
+  }
+  
+  .form-link{
+    height: max-content;
+    justify-content: left;
+    align-items: center;
+    @apply px-4 py-1 gap-y-1;
+  }
+
+  /* .form-button{
+    @apply bg-red-500; 
+  } */
+
+  .form-items label{
+    @apply w-full pl-2 text-base;
+  }
+
+  .form-items i{
+    position: absolute;
+    top: 42px;
+    left: 15px; 
+  }
+
+  .form-items input{
+    @apply w-full h-full py-2 pl-8 border border-gray-500 rounded-md; /* Fix: border-1 -> border */
+  }
+
+  .form-items input:focus{
+    @apply bg-white outline-none border-emerald-600 ring-2 ring-emerald-200; /* Focus clair et accessible */
+  }
+
+  .form-items input:hover{
+    @apply border-2 hover:border-emerald-500;
+  }
+}
